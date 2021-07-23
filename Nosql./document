@@ -1,0 +1,10 @@
+/* tous d'abord j'ai installé mongodb (la bd pour stocker les données massives )en utilisant le tuto suivant : 
+https://linuxhint.com/install_mongodb_ubuntu_20_04/
+par les commandes suivents:
+*sudo apt update
+*sudo apt upgrade
+*sudo apt install mongodb
+puis j'ai utilsé la commande suivent pour le verifier ma base de données il est active ou non /sudo systemctl status mongodb/.
+*sudo systemctl start mongodb:mise en marche mongodb , donc je suis de ma base de donnée, puis j'ai crée ma base de donnée jarditou.
+apres j'ai téléchrager robo3t .
+
