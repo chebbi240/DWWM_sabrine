@@ -20,6 +20,3 @@ DELIMITER;
 
 INSERT INTO lignedecommande (id_commande, id_produit, quantite, prix) VALUES
 (1, 3, 3, '10.00')
-
-/*vérifiez que le champ total est bien mis à jour.*/
---oui le champ est bien mis à jour  la colonne total de id1 dans la table commande est passé de 100 euros à 90 euros
