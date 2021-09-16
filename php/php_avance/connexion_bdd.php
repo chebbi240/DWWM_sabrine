@@ -9,19 +9,21 @@
 
     //Tente de se connecter
     try {
+       // $db = new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou', 'root', 'Cheb}A123@*');
+        //$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
+        //return $db;
         $db = new PDO('mysql:host=' .$host. ';charset=utf8;dbname=' .$base, $login, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
-        return $db;
+         return $db;
         } 
 
 
-    //Si échec de la connexion (du try), on attrape l'exception avec catch
-    catch (Exception $e) 
+    //le catsh execute qiand  on a un erreu dans le try
+    catch (Exception $e)
 {
-    // On affiche le message et le code de l'erreur
-    echo 'Erreur : ' . $e->getMessage() . '<br />';
-    echo 'N° : ' . $e->getCode();
-    die('Fin du script');
+    echo 'N° : ' . $e->getCode() .'<br />';                      
+    echo 'Erreur : ' . $e->getMessage() ;     // On affiche le message et le code de l'erreur                
+    die('fin de script');
     //Le script s'arrête ici.
 }
 
@@ -30,3 +32,5 @@
        
    }
     ?>
+
+<?php

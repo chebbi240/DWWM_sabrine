@@ -1,8 +1,8 @@
 <?php
-$nom = $_POST['Nom'];
+$nom = $_POST['nom'];
 $prenom = $_POST["prenom"];
-$codePost = $_POST["code"];
-$Email=$_POST["courriel"];
+$codePost = $_POST["cp"];
+$Email=$_POST["email"];
 $votre_question=$_POST["question"];
 $Dnaissance =$_POST["date"];
 //$accepte =$_POST["accepte"];
@@ -44,7 +44,7 @@ if(empty($_POST["genre"])){
 if(preg_match($dNaissance,$Dnaissance)){
     
 }else{
-    $erreur_Dnaissance="Veulliez saisir votre Email";
+    $erreur_Dnaissance="Veulliez saisir votre date de naissance";
     $erreur++;
 }
 // validation de code postale:
@@ -86,7 +86,7 @@ if (!isset($_POST["accepte"])) {
 } else{}
 
 if($erreur==0){
-    include"données.php";
+    include"donnée.php";
 
 }else {
     include"contact.php";

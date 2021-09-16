@@ -5,21 +5,24 @@
 
 $bool = 1; // Pour une bonne redirection 
 
+//La fonction empty() vérifie si une variable est vide ou non.
 
+//Cette fonction renvoie false si la variable existe et n'est pas vide, sinon elle renvoie true.
 
 if ( empty($_POST['pro_ref']) || empty($_POST['pro_libelle']) || empty($_POST['pro_prix']) || empty($_POST['pro_stock']) ) {
-    header("Location: update_form.php?pro_id=".$_POST['pro_id']."&erreur_ref=1");
+    header("Location: form_update.php?pro_id=".$_POST['pro_id']."&erreur_ref=1");
     $bool = 0;
     exit;
 }
 
+//La fonction is_numeric() vérifie si une variable est un nombre ou une chaîne numérique.
 
+// fonction renvoie vrai (1) si la variable est un nombre ou une chaîne numérique, sinon elle renvoie faux/rien.
 else if   (!is_numeric($_POST['pro_prix']) || !is_numeric($_POST['pro_stock']) )   {
-        header("Location: update_form.php?pro_id=".$_POST['pro_id']."&erreur_ref=3");
+        header("Location:from_update.php?pro_id=".$_POST['pro_id']."&erreur_ref=3");
         $bool = 0;
         exit;
     }
-
 
 
 require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
@@ -52,12 +55,12 @@ $result2 = $db->query($requete2);
 $row1 = $result2->fetch(PDO::FETCH_OBJ); 
 $ref=$row1->pro_ref ;
 
-if (($nb_ref == 1) and ($ref != $pro_ref))  { //test pour existante de la référence diffente de la référence du produit que l'on veut modifier
+if (($nb_ref == 1) and ($ref != $pro_ref))  
+{ //test pour existante de la référence diffente de la référence du produit que l'on veut modifier
     header("Location: update_form.php?pro_id=".$_POST['pro_id']."&erreur_ref=4");
     $bool = 0;
     exit;
 }
-
 
 
 
@@ -104,7 +107,7 @@ if($bool == 1){
     //libère la connection au serveur de BDD
     $requete->closeCursor();
 
-    //redirection vers la page index.php
+    //redirection vers la page tableau.php
     header("Location: tableau.php");
    
 }

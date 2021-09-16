@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <title>jarditou</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <?php   
+    session_start();
+        require "connexion_bdd.php"; 
+        //$requete = "SELECT *  FROM produits join categories on categories.cat_id=produits.pro_id";
 
+        //$result = $db->query($requete);
+    $db = connexionBase();
+    ?>
+    <?php
+     
+         $pro_id=$_GET['pro_id'];
+         $requete = "SELECT *  FROM produits join categories on categories.cat_id=produits.pro_cat_id where pro_id=".$pro_id;
+         $result = $db->query($requete);
+         $row = $result->fetch(PDO::FETCH_OBJ);
+         $pro_bloque=$row->pro_bloque;
+    ?>
 </head>
-
-<body>
-   
+<body class="container-fluid col-lg-10">
     <header>
         <div class="d-sm-none d-lg-block">
             <div class="row">
@@ -18,7 +30,7 @@
                     <img src="jarditou_photos/jarditou_logo.jpg" alt="jarditou_logo" width="150">
                 </div>
                 <div class="col-4">
-                    <h2 class="text-center">La qualité depuis 70 ans</h2>
+                    <h2 class="text-center">Tout le jardin</h2>
                 </div>
             </div>
         </div>
@@ -31,13 +43,13 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="accueil.php">Acceuil<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Acceuil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="tableau.php">Tableau</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Cantact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -47,20 +59,23 @@
         </div>
     </nav>
     <img src="jarditou_photos/promotion.jpg" alt="promotion" width="100%">
-    <h1>Votre formulaire a bien été envoyer</h1>
-    <?php
-    echo"Votre nom : ".$nom."<br/>";
-    echo"Votre prénom : ".$prenom."<br/>";
-    echo"Genre : ".$_POST["genre"]."<br/>";
-    echo"Votre Date de naissance :".$Dnaissance."<br/>";
-    echo"Votre Emaile : ".$Email."<br/>";
-    echo"Votre question : ".$votre_question."<br/>";
-    echo"Le sujet choisi : ".$sujet;
-    ?>
-    <?php
-    require "piedpage.php";
-    ?>
-
-</body>
+    </form method="GET">
+    <div class="d-flex justify-content-center">
+    <img src="jarditou_photos/<?php echo $row->pro_id.".".$row->pro_photo;?>" width="300">
+    </div >
+    <h1 class="d-flex justify-content-center" >Ëtes vous sûr de vouloir supprimer</h1>
+    <h1 class="d-flex justify-content-center" ><div classe="">"<?php echo $row->pro_libelle;?>"</div>de la base de donnéés?</h1>
+    <from>
+    <div class="d-flex justify-content-center" name = actionProduit>
+   <button class="btn btn-secondary "><a class="nav-link"  href="details.php?pro_id=<?php echo $row->pro_id?>" >Annuler</a></button>
+   <button class="btn btn-danger"><a class="nav-link" href="script_delet.php?pro_id=<?php echo $row->pro_id?>">Supprimer</a></button>
+    </div><br/>
+    <?php 
+     $result->closeCursor();
+     ?>
+        <?php
+        require "pied_page.php";
+        ?>
+        </body>
 
 </html>

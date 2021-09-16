@@ -1,4 +1,4 @@
-<?php
+
 $nom = $_POST['nom'];
 $prenom = $_POST["prenom"];
 $codePost = $_POST["cp"];
@@ -86,9 +86,8 @@ if (!isset($_POST["accepte"])) {
 } else{}
 
 if($erreur==0){
-    include"données_jarditou.php";
+    include"donnee_jarditou.php";
 
 }else {
     include"contact_jarditou.php";
 }
-?>

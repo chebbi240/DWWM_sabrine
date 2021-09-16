@@ -58,13 +58,13 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="accueil.php">Acceuil<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Acceuil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="tableau.php">Tableau</a>
+                    <a class="nav-link" href="tableau_c.php">Tableau</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="formulaire.php">Cantact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -75,7 +75,7 @@
     </nav>
     <img src="jarditou_photos/promotion.jpg" alt="promotion" width="100%">
     <div class="d-flex justify-content-center">
-    <img src="images/<?php echo $row->pro_id.".".$row->pro_photo;?>" width="200">
+    <img src="jarditou_photos/<?php echo $row->pro_id.".".$row->pro_photo;?>" width="200">
     </div>
     <form method="GET" class="container-fluid col-lg-8">
     <label for="pro_ref">Référence :</label>
@@ -92,7 +92,7 @@
     <input type="text" class="form-control" name="pro_couleur" value="<?php echo $row->pro_couleur;?>"disabled="disabled" >
     <label for="pro_d_ajout">Date d'ajout :</label>
     <input type="date" class="form-control" name="pro_d_ajout" value="<?php echo $row->pro_d_ajout;?>"disabled="disabled" >
-    <label for="pro_d_modif">Date d'ajout :</label>
+    <label for="pro_d_modif">Date de modification :</label>
     <input type="text" class="form-control" name="pro_d_modif" value="<?php echo $row->pro_d_modif;?>"disabled="disabled" >
     <label for="pro_bloque">Produit bloqué ? :<br/>
     
@@ -101,14 +101,16 @@
     </label>
    <br><br>
    <div class="container" name = actionProduit>
-   <button class="btn btn-secondary "><a class="nav-link" role="button" href="tableau.php" >Retour</a></button>
-   <button class="btn btn-warning" ><a class="nav-link" href="update_form.php?pro_id=<?php echo $row->pro_id;?>">Modifier</a></button>
-   <button class="btn btn-danger"><a class="nav-link"  href="delete_from.php?pro_id=<?php echo $row->pro_id;?>">Supprimer</a></button>
+
+   <button class="btn btn-secondary "><a class="nav-link" role="button" href="tableau_c.php" >Retour</a></button>
+   <!--<button class="btn btn-warning" ><a class="nav-link" href="update_form.php?pro_id=<?php echo $row->pro_id?>" >Modifier</a></button>
+   <button class="btn btn-danger"><a class="nav-link"  href="delete_form.php?pro_id=<?php echo $row->pro_id?>">Supprimer</a></button>-->
+
     </div><br/>
     </form>
     <?php
-    require "piedpage.php";
+    require "pied_page.php";
     ?>
 </body>
 
-</html>     
+   

@@ -38,7 +38,7 @@
                                 <a class="nav-link" href="tableau_jarditou.php">Tableau</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact_jarditou.php">Cantact</a>
+                                <a class="nav-link" href="contact_jarditou.php">Contact</a>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">

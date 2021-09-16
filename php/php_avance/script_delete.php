@@ -12,19 +12,19 @@ $pro_id=$_GET['pro_id'];
 //**********     connection à la base de données    **********
 
 // si la ligne : 'require "connection_bdd.php";', ci-dessous est décommentée, 
-// il faut commenter la ligne : '$db = new PDO('mysql:host=localhost;charset=utf8;dbname=hotel', 'root', '');'
+// il faut commenter la ligne : '$db = new PDO('mysql:host=localhost;charset=utf8;dbname=hotel', 'root', 'root');'
 //et décommenter la ligne : '$db = new PDO('mysql:host='.$host.';charset=utf8;dbname='.$base.'', $login, $password);'
 
 //require "connection_bdd.php";
 
 try{        
-    $db = new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou', 'root', '');
+    $db = new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou', 'root','');
     //$db = new PDO('mysql:host='.$host.';charset=utf8;dbname='.$base.'', $login, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 catch (Exception $e) {
 
-    echo "La connection à la base e données a échoué ! <br>";
+    echo "La connection à la base de données a échoué ! <br>";
     echo "Merci de bien vérifier vos paramètres de connection ...<br>";
     echo "Erreur : " . $e->getMessage() . "<br>";
     echo "N° : " . $e->getCode();
